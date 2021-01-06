@@ -125,7 +125,6 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
                 <Button variant="primary" type="submit" disabled={false}>
                     Submit
                 </Button> {uploading && <Spinner />}
-                <p>{String(uploading)}</p>
             </Form>
             }
         </>
