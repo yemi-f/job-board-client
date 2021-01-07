@@ -12,8 +12,8 @@ import AddNewJobPage from './pages/AddNewJobPage';
 
 import { Container } from 'react-bootstrap';
 
-// axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
-axios.defaults.baseURL = `http://localhost:5000`
+axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
+// axios.defaults.baseURL = `http://localhost:5000`
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -73,8 +73,6 @@ function App() {
         <Route path="*">
           <Err404 />
         </Route>
-
-
       </Switch>
     </Router>
   );
