@@ -8,9 +8,12 @@ import JobPage from './pages/JobPage';
 import ApplyToJobPage from './pages/ApplyToJobPage';
 import axios from 'axios';
 import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
+import AddNewJobPage from './pages/AddNewJobPage';
+
 import { Container } from 'react-bootstrap';
 
-axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com/`;
+// axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
+axios.defaults.baseURL = `http://localhost:5000`
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -42,9 +45,6 @@ function App() {
     setTok(str)
   }
 
-
-
-
   return (
     <Router className="App">
       <AppNavbar isAuthenticated={isAuthenticated} tok={tok} updateAuthenticatedState={updateAuthenticatedState} />
@@ -60,6 +60,9 @@ function App() {
         </Route>
         <Route path="/admin/applicants">
           <SubmittedApplicationsPage tok={tok} />
+        </Route>
+        <Route path="/admin/add-new-job">
+          <AddNewJobPage tok={tok} />
         </Route>
         <Route exact path="/:id">
           <JobPage />

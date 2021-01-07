@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { useTextInput } from "../util/CustomHooks"
 
 const ApplyToJobPage = () => {
     const [showSuccessMsg, setShowSuccessMsg] = useState(false);
@@ -14,7 +15,7 @@ const ApplyToJobPage = () => {
 
     return (
         <Container>
-            <SuccessMessage showSuccessMsg={showSuccessMsg} />
+            <SuccessMessage showSuccessMsg={showSuccessMsg} text={"Your application has been received."} />
             <ApplyToJobForm showSuccessMsg={showSuccessMsg} updateShowSuccessMsg={updateShowSuccessMsg} />
         </Container>
     )
@@ -24,9 +25,9 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
     let location = useLocation();
     const job = location.state.job;
 
-    const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useInput("");
-    const { value: lastName, bind: bindLastName, reset: resetLastName } = useInput("");
-    const { value: email, bind: bindEmail, reset: resetEmail } = useInput("");
+    const { value: firstName, bind: bindFirstName, reset: resetFirstName } = useTextInput("");
+    const { value: lastName, bind: bindLastName, reset: resetLastName } = useTextInput("");
+    const { value: email, bind: bindEmail, reset: resetEmail } = useTextInput("");
     const [file, setFile] = useState(null);
     const [fileInputKey, setFileInputKey] = useState("");
     const [uploading, setUploading] = useState(false);
@@ -122,7 +123,7 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
                     <Form.File type="file" label="Resume" accept="application/pdf" key={fileInputKey} onChange={(e) => handleFileUploadChange(e)} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" disabled={false}>
+                <Button variant="info" type="submit" disabled={false}>
                     Submit
                 </Button> {uploading && <Spinner />}
             </Form>
@@ -131,23 +132,8 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
     )
 }
 
-const useInput = initialValue => {
-    const [value, setValue] = useState(initialValue);
 
-    return {
-        value,
-        setValue,
-        reset: () => setValue(""),
-        bind: {
-            value,
-            onChange: event => {
-                setValue(event.target.value);
-            }
-        }
-    };
-};
-
-const SuccessMessage = ({ showSuccessMsg }) => {
+export const SuccessMessage = ({ showSuccessMsg, text }) => {
     return (
         <>
             {showSuccessMsg &&
@@ -155,7 +141,7 @@ const SuccessMessage = ({ showSuccessMsg }) => {
                     <FontAwesomeIcon icon={faCheckCircle} size="5x" color="#72C341" className="mt-4 mb-2" />
                     <div className="my-2" >
                         <h1>Thank You!</h1>
-                        <h3 className="font-weight-light">Your application has been received.</h3>
+                        <h3 className="font-weight-light">{text}</h3>
                     </div>
                 </div>
             }

@@ -1,14 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import Cookies from 'js-cookie'
 
 
-const SubmittedApplicationsPage = ({ tok }) => {
-    let history = useHistory();
-
+const SubmittedApplicationsPage = () => {
     const [applicants, setApplicants] = useState([]);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +17,7 @@ const SubmittedApplicationsPage = ({ tok }) => {
             setIsLoading(true)
             try {
                 const res = await axios.get(`/applicants`, {
-                    headers: { "Authorization": tok }
+                    headers: { "Authorization": Cookies.get("token") }
                 });
                 setApplicants(res.data.docs);
                 setIsLoading(false);
@@ -29,25 +28,35 @@ const SubmittedApplicationsPage = ({ tok }) => {
             }
         }
         getData();
-    }, [tok])
+    }, [])
 
-    const handleClick = () => {
-        history.push(`/admin/signin`);
-    }
 
     return (
         <Container>
             {isError && !isLoading &&
-                <>
-                    <h2>You are not authorized</h2>
-                    <Button onClick={() => handleClick()}>Sign in</Button>
-                </>
+                <UnauthorizedMessage />
             }
             {!isError && !isLoading && <Table>
                 <TableHeader />
                 <TableBody applicants={applicants} />
             </Table>}
         </Container>
+    )
+}
+
+export const UnauthorizedMessage = () => {
+    let history = useHistory();
+    let location = useLocation()
+
+    const handleClick = () => {
+        history.push({ pathname: `/admin/signin`, state: { from: location.pathname } });
+    }
+
+    return (
+        <div className="text-center">
+            <h2 className="my-3">You are not authorized to access this web page</h2>
+            <Button variant="info" size="lg" onClick={() => handleClick()}>Sign in</Button>
+        </div>
     )
 }
 

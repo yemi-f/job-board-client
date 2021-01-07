@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Container, Form, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const SignInPage = ({ login, updateTok }) => {
+
     return (
         <Container>
             <SignInForm login={login} updateTok={updateTok} />
@@ -38,14 +40,23 @@ const SignInForm = ({ login, updateTok }) => {
         setInputType(inputType === "text" ? "password" : "text");
     }
 
+    let location = useLocation()
+
     const onSubmit = (e) => {
         e.preventDefault();
+
+        try {
+            console.log(location.state.from)
+        } catch (e) {
+            console.log("default")
+        }
         axios.post(`/users/login`, {
             email: inputValue.email,
             password: inputValue.password
         })
             .then(res => {
-                updateTok(res.data)
+                updateTok(res.data);
+                Cookies.set("token", res.data)
                 login();
                 history.push("/admin/applicants")
             })
@@ -72,10 +83,11 @@ const SignInForm = ({ login, updateTok }) => {
                 <input type="checkbox" className="form-check-input" id="show-password" onClick={() => toggleShowPassword()} />
                 <label className="form-check-label" htmlFor="show-password" >Show password</label>
             </div>
-            <Button variant="primary" type="submit">
+            <Button variant="info" type="submit">
                 Sign in
             </Button>
         </Form>
     )
 }
+
 export default SignInPage;

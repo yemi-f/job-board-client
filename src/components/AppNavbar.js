@@ -1,17 +1,24 @@
 import axios from 'axios';
 import React from 'react';
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
+import Cookies from 'js-cookie'
 
-const AppNavbar = ({ isAuthenticated, updateAuthenticatedState }) => {
+const AppNavbar = ({ updateAuthenticatedState }) => {
 
     let history = useHistory();
     const logout = async () => {
         await axios.get(`/users/logout`)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data);
+                Cookies.remove("token");
+            })
             .catch(err => console.log(err));
+
         updateAuthenticatedState(false);
         history.push("/admin/signin");
+        Cookies.remove("token");
+
     }
 
     return (
@@ -22,11 +29,13 @@ const AppNavbar = ({ isAuthenticated, updateAuthenticatedState }) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                        {!isAuthenticated && <Nav.Link as={NavLink} to="/admin/signin">Admin</Nav.Link>}
-                        {isAuthenticated && <Nav.Link as={NavLink} to="/admin/applicants">Applicants</Nav.Link>}
-                        {isAuthenticated && <Nav.Link as={Button} className="btn-light" onClick={() => {
-                            logout();
-                        }}>Log out</Nav.Link>}
+                        {!(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/signin">Admin</Nav.Link>}
+                        {(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/applicants">Applicants</Nav.Link>}
+                        {(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/add-new-job">Add job</Nav.Link>}
+                        {(Cookies.get("token")) && <Nav.Link className="btn-light rounded-lg"
+                            onClick={() => { logout(); }}>
+                            Log out
+                        </Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </div>

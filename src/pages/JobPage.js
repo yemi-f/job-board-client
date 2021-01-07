@@ -56,7 +56,7 @@ const JobPage = () => {
                 <h3 style={{ textTransform: "capitalize" }}>{job.title}</h3>
                 <p className="text-muted">
                     <span><FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: 4 }} />{job.location}</span>
-                    <span><FontAwesomeIcon icon={faBuilding} style={{ marginLeft: 16, marginRight: 4 }} />{job.employeeType}</span>
+                    <span><FontAwesomeIcon icon={faBuilding} style={{ marginLeft: 16, marginRight: 4 }} />{job.employmentType}</span>
                     <span><FontAwesomeIcon icon={faProjectDiagram} style={{ marginLeft: 16, marginRight: 4 }} />{job.department}</span>
                 </p>
             </div>

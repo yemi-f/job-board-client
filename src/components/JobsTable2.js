@@ -144,7 +144,7 @@ const DropdownButtonsBar = ({ updateLocation, updateDepartment, updateJobType, c
     )
 }
 
-const DropdownButton = ({ items = [], title, updateLocation, updateJobType, updateDepartment, filtering, updateFiltering }) => {
+const DropdownButton = ({ items = [], title, updateLocation, updateJobType, updateDepartment, updateFiltering }) => {
     const handleChange = (item) => {
         if (title === "Job Type") updateJobType(item === "All Job Types" ? "" : item);
         else if (title === "Location") updateLocation(item === "All Locations" ? "" : item.split(",")[0]);
@@ -185,7 +185,7 @@ const TableRow = ({ job, pageNum }) => {
                 </p>
             </Col>
             <Col sm={2}>
-                <Button variant="info" className="my-2">Apply</Button>
+                <Button variant="secondary" className="my-2">Apply</Button>
             </Col>
         </Row>
     )
