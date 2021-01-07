@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Row, Col, Container, Form } from "react-bootstrap";
+import { Button, Row, Col, Container, Form, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faMapMarkerAlt, faBuilding,
@@ -119,10 +119,17 @@ const PaginationBar = ({ pageNum, handlePageNumClick, totalCount, perPage, isLoa
     )
 }
 
-const TableBody = ({ jobs = [], pageNum }) => {
+const TableBody = ({ jobs = [], pageNum, isLoading }) => {
     return (
         <>
-            {jobs.map((job, index) => {
+            {isLoading &&
+                <div className="text-center my-4">
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>
+                </div>
+            }
+            {!isLoading && jobs.map((job, index) => {
                 return <TableRow key={index} job={job} pageNum={pageNum} />
             })}
         </>
@@ -207,8 +214,5 @@ const useQueryInput = initialValue => {
         reset: () => setValue("")
     };
 };
-
-
-// ["Toronto, ON","Ottawa, ON","Waterloo, ON","Hamilton, ON","Victoria, BC", "Vancouver, BC"]
 
 export default JobsTable2;
