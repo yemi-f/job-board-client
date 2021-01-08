@@ -56,7 +56,7 @@ const JobsTable2 = () => {
 
     const handlePageNumClick = (num) => {
         const to = {
-            pathname: `/page/${num}`,
+            pathname: `/jobs/page/${num}`,
         }
         history.push(to)
     }

@@ -56,7 +56,7 @@ function App() {
         <Route exact path="/jobs">
           <JobsTable2 jobs={jobs} />
         </Route>
-        <Route exact path="jobs/page/:id">
+        <Route exact path="/jobs/page/:id">
           <JobsTable2 jobs={jobs} />
         </Route>
         <Route path="/admin/signin">
