@@ -43,7 +43,7 @@ const JobPage = () => {
 
     const handleButtonClick = () => {
         const to = {
-            pathname: `/${job._id}-${job.title}/apply`,
+            pathname: `/job/${job._id}-${job.title}/apply`,
             state: { job: job }
         }
 

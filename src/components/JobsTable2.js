@@ -172,10 +172,8 @@ const DropdownButton = ({ items = [], title, updateLocation, updateJobType, upda
 const TableRow = ({ job, pageNum }) => {
     let history = useHistory();
     const onClick = () => {
-        // console.log(job.title);
-
         const to = {
-            pathname: `/${job._id}-${job.title}`,
+            pathname: `/job/${job._id}-${job.title}`,
             state: { job: job, pageNum: pageNum }
         }
         history.push(to)
@@ -209,7 +207,7 @@ const useQueryInput = initialValue => {
         update: (val) => {
             setValue(val);
             console.log(val);
-            history.push(`/page/${1}`);
+            history.push(`/jobs/page/${1}`);
         },
         reset: () => setValue("")
     };

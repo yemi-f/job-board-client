@@ -12,8 +12,8 @@ import AddNewJobPage from './pages/AddNewJobPage';
 import Homepage from './pages/Homepage';
 import { Container } from 'react-bootstrap';
 
-axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
-// axios.defaults.baseURL = `http://localhost:5000`
+// axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
+axios.defaults.baseURL = `http://localhost:5000`
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -67,10 +67,10 @@ function App() {
         <Route path="/admin/add-new-job">
           <AddNewJobPage tok={tok} />
         </Route>
-        <Route exact path="/:id">
+        <Route exact path="/job/:id">
           <JobPage />
         </Route>
-        <Route exact path="/:id/apply">
+        <Route exact path="/job/:id/apply">
           <ApplyToJobPage />
         </Route>
         <Route path="*">

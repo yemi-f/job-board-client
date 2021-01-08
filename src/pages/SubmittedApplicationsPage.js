@@ -92,7 +92,7 @@ const TableRow = ({ applicant }) => {
             title: applicant.job.title
         }
         const to = {
-            pathname: `/${job._id}-${job.title}`,
+            pathname: `/job/${job._id}-${job.title}`,
             state: {
                 job: job
             }
