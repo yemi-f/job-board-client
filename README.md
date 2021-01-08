@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# job-board client
+
+Demo at https://zealous-kepler-6ca989.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
