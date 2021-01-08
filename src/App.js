@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import JobsTable2 from "./components/JobsTable2";
 import AppNavbar from "./components/AppNavbar";
 import SignInPage from "./pages/SignInPage"
@@ -10,7 +10,7 @@ import axios from 'axios';
 import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
 import AddNewJobPage from './pages/AddNewJobPage';
 import Homepage from './pages/Homepage';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 
 axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
 // axios.defaults.baseURL = `http://localhost:5000`
@@ -77,9 +77,14 @@ function App() {
 }
 
 const Err404 = () => {
+  let history = useHistory();
+  const handleClick = () => {
+    history.push("/");
+  }
   return (
-    <Container>
-      <h4>This page does not exist</h4>
+    <Container className="text-center">
+      <h2 className="my-3">This page does not exist</h2>
+      <Button variant="info" size="lg" onClick={() => handleClick()}>Go home</Button>
     </Container>
   )
 }
