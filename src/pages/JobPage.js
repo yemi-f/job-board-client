@@ -8,38 +8,34 @@ import axios from 'axios';
 const JobPage = () => {
     let location = useLocation();
     let history = useHistory();
-
     const [job, setJob] = useState([]);
-
 
     useEffect(() => {
         let jobId;
-        jobId = location.state.job._id;
-
-        // const getJobIdFromUrl = () => {
-        //     const temp = location.pathname.split("/");
-        //     return temp[1].split("-")[0]
-        // }
-
-        if (location.state.job.location) {
-            setJob(location.state.job);
-            // console.log(1)
-            return;
+        const getJobIdFromUrl = () => {
+            const temp = location.pathname.split("/");
+            return temp[2].split("-")[0]
         }
+
+        if (location.state) {
+            if (location.state.job.location) {
+                setJob(location.state.job);
+                return;
+            }
+        }
+        jobId = getJobIdFromUrl();
 
         const getData = async () => {
             try {
                 const res = await axios.get(`/jobs/${jobId}`);
                 setJob(res.data);
-                // console.log(2)
-                console.log(res.data);
             } catch (error) {
                 console.log(error)
             }
         }
 
         getData();
-    }, [location.state.job._id, location.pathname, location.state.job])
+    }, [location.pathname, location.state])
 
     const handleButtonClick = () => {
         const to = {
