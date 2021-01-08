@@ -9,7 +9,7 @@ import ApplyToJobPage from './pages/ApplyToJobPage';
 import axios from 'axios';
 import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
 import AddNewJobPage from './pages/AddNewJobPage';
-
+import Homepage from './pages/Homepage';
 import { Container } from 'react-bootstrap';
 
 axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
@@ -50,9 +50,12 @@ function App() {
       <AppNavbar isAuthenticated={isAuthenticated} tok={tok} updateAuthenticatedState={updateAuthenticatedState} />
       <Switch>
         <Route exact path="/">
+          <Homepage />
+        </Route>
+        <Route exact path="/jobs">
           <JobsTable2 jobs={jobs} />
         </Route>
-        <Route exact path="/page/:id">
+        <Route exact path="jobs/page/:id">
           <JobsTable2 jobs={jobs} />
         </Route>
         <Route path="/admin/signin">
