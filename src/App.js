@@ -11,6 +11,7 @@ import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
 import AddNewJobPage from './pages/AddNewJobPage';
 import Homepage from './pages/Homepage';
 import { Container } from 'react-bootstrap';
+import './App';
 
 // axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
 axios.defaults.baseURL = `http://localhost:5000`
