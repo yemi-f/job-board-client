@@ -10,7 +10,6 @@ const AppNavbar = ({ updateAuthenticatedState }) => {
     const logout = async () => {
         await axios.get(`/users/logout`)
             .then(res => {
-                console.log(res.data);
                 Cookies.remove("token");
             })
             .catch(err => console.log(err));
@@ -24,7 +23,7 @@ const AppNavbar = ({ updateAuthenticatedState }) => {
     return (
         <Navbar bg="light" expand="lg">
             <div className="container">
-                <Navbar.Brand as={NavLink} to="/">Job Board</Navbar.Brand>
+                <Navbar.Brand as={NavLink} to="/">Mango</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

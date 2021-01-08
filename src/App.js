@@ -11,15 +11,13 @@ import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
 import AddNewJobPage from './pages/AddNewJobPage';
 import Homepage from './pages/Homepage';
 import { Container } from 'react-bootstrap';
-import './App';
 
-// axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
-axios.defaults.baseURL = `http://localhost:5000`
+axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
+// axios.defaults.baseURL = `http://localhost:5000`
 
 function App() {
   const [jobs, setJobs] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [tok, setTok] = useState("");
 
   useEffect(() => {
     const getAllJobs = async () => {
@@ -42,13 +40,9 @@ function App() {
     setIsAuthenticated(false);
   }
 
-  const updateTok = (str) => {
-    setTok(str)
-  }
-
   return (
     <Router className="App">
-      <AppNavbar isAuthenticated={isAuthenticated} tok={tok} updateAuthenticatedState={updateAuthenticatedState} />
+      <AppNavbar isAuthenticated={isAuthenticated} updateAuthenticatedState={updateAuthenticatedState} />
       <Switch>
         <Route exact path="/">
           <Homepage />
@@ -60,13 +54,13 @@ function App() {
           <JobsTable2 jobs={jobs} />
         </Route>
         <Route path="/admin/signin">
-          <SignInPage jobs={jobs} login={login} tok={tok} updateTok={updateTok} />
+          <SignInPage jobs={jobs} login={login} />
         </Route>
         <Route path="/admin/applicants">
-          <SubmittedApplicationsPage tok={tok} />
+          <SubmittedApplicationsPage />
         </Route>
         <Route path="/admin/add-new-job">
-          <AddNewJobPage tok={tok} />
+          <AddNewJobPage />
         </Route>
         <Route exact path="/job/:id">
           <JobPage />

@@ -45,7 +45,7 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
             };
             reader.onerror = function (error) {
                 reject(error)
-                // console.log('Error: ', error);
+                console.log('Error: ', error);
             };
         })
     }
@@ -56,17 +56,11 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         setUploading(true);
-
-        console.log(`${firstName} ${lastName} ${email}`);
-        console.log(file);
 
         getBase64(file)
             .then(
                 (response) => {
-                    // console.log(response);
-
                     axios
                         .post(`/applicants`, {
                             firstName: firstName,
@@ -75,8 +69,7 @@ const ApplyToJobForm = ({ showSuccessMsg, updateShowSuccessMsg }) => {
                             resume: { base64Str: response.split(",")[1], fileName: file.name },
                             job: { title: job.title, id: job._id }
                         })
-                        .then(res => {
-                            console.log(res);
+                        .then(() => {
                             setUploading(false);
                         })
                         .catch(e => console.log(e))

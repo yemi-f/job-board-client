@@ -13,7 +13,7 @@ const Homepage = () => {
     }
     return (
         <div style={{ backgroundColor: "#F8F9FA" }}>
-            <Container className="py-4" style={{ height: "70vh" }}>
+            <Container className="py-3" style={{ height: "70vh" }}>
                 <Row>
                     <Col xs={12} md={6} className="text-center my-auto">
                         <h2 className="display-4 m-3">Join us as we build something special</h2>

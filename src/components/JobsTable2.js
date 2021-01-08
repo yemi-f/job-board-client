@@ -206,7 +206,6 @@ const useQueryInput = initialValue => {
         setValue,
         update: (val) => {
             setValue(val);
-            console.log(val);
             history.push(`/jobs/page/${1}`);
         },
         reset: () => setValue("")

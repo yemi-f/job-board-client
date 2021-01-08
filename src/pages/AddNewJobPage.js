@@ -66,7 +66,6 @@ const AddNewJobPage = () => {
                 headers: { "Authorization": Cookies.get("token") }
             })
                 .then(res => {
-                    console.log(res.data);
                     setIsError(false);
                     setShowResMsg(false)
                     setShowReqMsg(false)

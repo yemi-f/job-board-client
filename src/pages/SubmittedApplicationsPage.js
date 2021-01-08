@@ -98,8 +98,6 @@ const TableRow = ({ applicant }) => {
             }
         }
 
-        // console.log(to.pathname)
-
         history.push(to);
     }
 

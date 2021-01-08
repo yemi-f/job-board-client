@@ -1,19 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Container, Form, Button } from "react-bootstrap";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie'
 
-const SignInPage = ({ login, updateTok }) => {
+const SignInPage = ({ login }) => {
 
     return (
         <Container>
-            <SignInForm login={login} updateTok={updateTok} />
+            <SignInForm login={login} />
         </Container>
     )
 }
 
-const SignInForm = ({ login, updateTok }) => {
+const SignInForm = ({ login }) => {
     let history = useHistory();
     const [inputValue, setInputValue] = useState({
         email: "",
@@ -40,22 +40,14 @@ const SignInForm = ({ login, updateTok }) => {
         setInputType(inputType === "text" ? "password" : "text");
     }
 
-    let location = useLocation()
-
     const onSubmit = (e) => {
         e.preventDefault();
 
-        try {
-            console.log(location.state.from)
-        } catch (e) {
-            console.log("default")
-        }
         axios.post(`/users/login`, {
             email: inputValue.email,
             password: inputValue.password
         })
             .then(res => {
-                updateTok(res.data);
                 Cookies.set("token", res.data)
                 login();
                 history.push("/admin/applicants")
