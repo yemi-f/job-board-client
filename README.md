@@ -9,6 +9,10 @@ The frontend was built with React and Bootstrap
 ## Demo
 https://zealous-kepler-6ca989.netlify.app/ 
 
+![Mango Demo](https://media.giphy.com/media/rqLAHsxtS6N1ip1AwJ/giphy.gif)
+
+
+
 ## Explore the app
 
  - view all jobs
