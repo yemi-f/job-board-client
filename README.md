@@ -1,6 +1,26 @@
-# job-board client
+## Description
+This is the front-end for the web application of Mango (a hypothetical organization). The backend can be found at [job-board-server](https://github.com/yemi-f/job-board-server).
 
-Demo at https://zealous-kepler-6ca989.netlify.app/
+- `Visitors` can view jobs and apply to jobs. 
+- `Admins` can add new jobs, and view all submitted applications *only* when they are logged in.
+
+The frontend was built with React and Bootstrap
+
+## Demo
+https://zealous-kepler-6ca989.netlify.app/ 
+
+## Explore the app
+
+ - view all jobs
+	 -  filter by `department`, `employment type`, and/or `location`
+	 - navigate pages
+ - apply for a job with first name, last name, email, and resume
+ - log in as an admin
+	 - `email` french@tuesday.com
+	 - `password` painting
+	 - view submitted resumes
+	 - add a new job
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
