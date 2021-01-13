@@ -11,6 +11,18 @@ import SubmittedApplicationsPage from './pages/SubmittedApplicationsPage';
 import AddNewJobPage from './pages/AddNewJobPage';
 import Homepage from './pages/Homepage';
 import { Container, Button } from 'react-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faBuilding, faCheckCircle, faMapMarkerAlt, faExclamation, faProjectDiagram,
+  faExternalLinkAlt, faAngleDoubleLeft, faAngleDoubleRight,
+  faAngleLeft, faAngleRight
+} from '@fortawesome/free-solid-svg-icons';
+library.add(
+  faCheckCircle, faExclamation, faMapMarkerAlt,
+  faBuilding, faProjectDiagram, faExternalLinkAlt,
+  faAngleDoubleLeft, faAngleDoubleRight,
+  faAngleLeft, faAngleRight
+);
 
 axios.defaults.baseURL = `https://job-board-xc23d56.herokuapp.com`;
 // axios.defaults.baseURL = `http://localhost:5000`

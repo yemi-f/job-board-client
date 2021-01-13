@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Button, Container, Form, Col, OverlayTrigger, Popover, Row } from 'react-bootstrap';
 import CreatableSelect from 'react-select/creatable';
 import { useArrayInput, useTextInput } from "../util/CustomHooks";
-import { Exclamation } from "../util/Icons";
 import { SuccessMessage } from "../pages/ApplyToJobPage";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from 'axios';
-import { UnauthorizedMessage } from "./SubmittedApplicationsPage"
+import { UnauthorizedMessage } from "./SubmittedApplicationsPage";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const AddNewJobPage = () => {
     let history = useHistory();
@@ -172,7 +172,13 @@ const RequiredFieldErrorMessage = ({ children, showMsg, handleToggle }) => {
                 <Popover>
                     <Popover.Content>
                         <Row>
-                            <Col xs={2}><Exclamation /></Col>
+                            <Col xs={2}><FontAwesomeIcon icon="exclamation" color="white"
+                                size="2x"
+                                style={{
+                                    backgroundColor: "#f0ad4e", width: "28px"
+                                    , paddingTop: "4px", paddingBottom: "4px", borderRadius: 4
+                                }} />
+                            </Col>
                             <Col xs={10} className="my-auto"><span>Please fill out this field.</span></Col>
                         </Row>
                     </Popover.Content>

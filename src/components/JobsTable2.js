@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Container, Form, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faMapMarkerAlt, faBuilding,
-    faProjectDiagram, faAngleDoubleLeft, faAngleDoubleRight,
-    faAngleLeft, faAngleRight
-} from '@fortawesome/free-solid-svg-icons';
 import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import Pagination from "react-js-pagination";
@@ -108,10 +103,10 @@ const PaginationBar = ({ pageNum, handlePageNumClick, totalCount, perPage, isLoa
                         totalItemsCount={totalCount}
                         onChange={(num) => handlePageNumClick(num)}
                         pageRangeDisplayed={5}
-                        prevPageText={<FontAwesomeIcon icon={faAngleLeft} />}
-                        nextPageText={<FontAwesomeIcon icon={faAngleRight} />}
-                        firstPageText={<FontAwesomeIcon icon={faAngleDoubleLeft} />}
-                        lastPageText={<FontAwesomeIcon icon={faAngleDoubleRight} />}
+                        prevPageText={<FontAwesomeIcon icon="angle-left" />}
+                        nextPageText={<FontAwesomeIcon icon="angle-right" />}
+                        firstPageText={<FontAwesomeIcon icon="angle-double-left" />}
+                        lastPageText={<FontAwesomeIcon icon="angle-double-right" />}
                     />
                 </div>
             </Col>
@@ -184,9 +179,9 @@ const TableRow = ({ job, pageNum }) => {
             <Col sm={10}>
                 <span className="lead" style={{ textTransform: "capitalize" }}>{job.title}</span>
                 <p className="text-muted">
-                    <span><FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: 4 }} />{job.location}</span>
-                    <span><FontAwesomeIcon icon={faBuilding} style={{ marginLeft: 16, marginRight: 4 }} />{job.employmentType}</span>
-                    <span><FontAwesomeIcon icon={faProjectDiagram} style={{ marginLeft: 16, marginRight: 4 }} />{job.department}</span>
+                    <span><FontAwesomeIcon icon="map-marker-alt" style={{ marginRight: 4 }} />{job.location}</span>
+                    <span><FontAwesomeIcon icon="building" style={{ marginLeft: 16, marginRight: 4 }} />{job.employmentType}</span>
+                    <span><FontAwesomeIcon icon="project-diagram" style={{ marginLeft: 16, marginRight: 4 }} />{job.department}</span>
                 </p>
             </Col>
             <Col sm={2}>

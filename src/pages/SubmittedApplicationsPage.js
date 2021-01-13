@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Cookies from 'js-cookie'
 
 
@@ -109,7 +108,7 @@ const TableRow = ({ applicant }) => {
             <td onClick={() => handleJobClick()} style={{ cursor: "pointer" }}>{applicant.job.title}</td>
             <td>
                 <Link to={{ pathname: applicant.resumeUrl }} target="_blank">
-                    View resumé <FontAwesomeIcon className="ml-1" icon={faExternalLinkAlt} />
+                    View resumé <FontAwesomeIcon className="ml-1" icon="external-link-alt" />
                 </Link>
             </td>
         </tr>

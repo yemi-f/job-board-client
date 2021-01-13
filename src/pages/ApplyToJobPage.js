@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Form, Col, Button, Spinner } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { useTextInput } from "../util/CustomHooks"
 
@@ -131,7 +130,7 @@ export const SuccessMessage = ({ showSuccessMsg, text }) => {
         <>
             {showSuccessMsg &&
                 <div className="text-center">
-                    <FontAwesomeIcon icon={faCheckCircle} size="5x" color="#72C341" className="mt-4 mb-2" />
+                    <FontAwesomeIcon icon="check-circle" size="5x" color="#72C341" className="mt-4 mb-2" />
                     <div className="my-2" >
                         <h1>Thank You!</h1>
                         <h3 className="font-weight-light">{text}</h3>

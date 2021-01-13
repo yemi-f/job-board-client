@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Container, Button } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faBuilding, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const JobPage = () => {
@@ -51,9 +50,9 @@ const JobPage = () => {
             <div className="my-4">
                 <h3 style={{ textTransform: "capitalize" }}>{job.title}</h3>
                 <p className="text-muted">
-                    <span><FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: 4 }} />{job.location}</span>
-                    <span><FontAwesomeIcon icon={faBuilding} style={{ marginLeft: 16, marginRight: 4 }} />{job.employmentType}</span>
-                    <span><FontAwesomeIcon icon={faProjectDiagram} style={{ marginLeft: 16, marginRight: 4 }} />{job.department}</span>
+                    <span><FontAwesomeIcon icon="map-marker-alt" style={{ marginRight: 4 }} />{job.location}</span>
+                    <span><FontAwesomeIcon icon="building" style={{ marginLeft: 16, marginRight: 4 }} />{job.employmentType}</span>
+                    <span><FontAwesomeIcon icon="project-diagram" style={{ marginLeft: 16, marginRight: 4 }} />{job.department}</span>
                 </p>
             </div>
             <div className="my-4">
