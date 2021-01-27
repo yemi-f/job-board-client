@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 const SignInPage = ({ login }) => {
 
     return (
-        <Container>
+        <Container className="py-3">
             <SignInForm login={login} />
         </Container>
     )
