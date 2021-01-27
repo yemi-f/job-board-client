@@ -35,10 +35,11 @@ const SubmittedApplicationsPage = () => {
             {isError && !isLoading &&
                 <UnauthorizedMessage />
             }
-            {!isError && !isLoading && <Table>
-                <TableHeader />
-                <TableBody applicants={applicants} />
-            </Table>}
+            {!isError && !isLoading &&
+                <Table responsive>
+                    <TableHeader />
+                    <TableBody applicants={applicants} />
+                </Table>}
         </Container>
     )
 }
