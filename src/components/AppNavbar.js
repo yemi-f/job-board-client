@@ -28,7 +28,7 @@ const AppNavbar = ({ updateAuthenticatedState }) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={NavLink} to="/jobs">Jobs</Nav.Link>
-                        {!(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/signin">Admin</Nav.Link>}
+                        {!(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/signin">Login</Nav.Link>}
                         {(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/applicants">Applicants</Nav.Link>}
                         {(Cookies.get("token")) && <Nav.Link as={NavLink} to="/admin/add-new-job">Add job</Nav.Link>}
                         {(Cookies.get("token")) && <Nav.Link className="btn-light rounded-lg"
