@@ -21,7 +21,7 @@ const AppNavbar = ({ updateAuthenticatedState }) => {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="md">
             <div className="container">
                 <Navbar.Brand as={NavLink} to="/">Mango</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
