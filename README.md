@@ -20,8 +20,8 @@ https://zealous-kepler-6ca989.netlify.app/
 	 - navigate pages
  - apply for a job with first name, last name, email, and resume
  - log in as an admin
-	 - `email` french@tuesday.com
-	 - `password` painting
+	 - `email` butter@blue.com
+	 - `password` cookies
 	 - view submitted resumes
 	 - add a new job
 
