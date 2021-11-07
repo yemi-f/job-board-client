@@ -10,13 +10,7 @@ const JobPage = () => {
   const [job, setJob] = useState([]);
 
   useEffect(() => {
-    let jobId;
-    const getJobIdFromUrl = () => {
-      const temp = location.pathname.split("/");
-      return temp[2].split("-")[0];
-    };
-
-    jobId = getJobIdFromUrl();
+    const jobId = location.pathname.split("/")[2].split("-")[0];
 
     const getData = async () => {
       try {
@@ -33,7 +27,6 @@ const JobPage = () => {
   const handleButtonClick = () => {
     const to = {
       pathname: `/job/${job._id}-${job.title}/apply`,
-      state: { job: job },
     };
 
     history.push(to);
