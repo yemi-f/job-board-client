@@ -169,7 +169,7 @@ const TableRow = ({ job, pageNum }) => {
     const onClick = () => {
         const to = {
             pathname: `/job/${job._id}-${job.title}`,
-            state: { job: job, pageNum: pageNum }
+            state: { pageNum: pageNum }
         }
         history.push(to)
     }
