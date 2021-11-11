@@ -148,11 +148,11 @@ const PaginationBar = ({
   );
 };
 
-const TableBody = ({ jobs = [], pageNum, isLoading }) => {
+export const TableBody = ({ jobs = [], pageNum, isLoading }) => {
   return (
     <>
       {isLoading && (
-        <div className="text-center my-4">
+        <div className="text-center my-4" data-testid="spinner-div">
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
@@ -255,7 +255,7 @@ const DropdownButton = ({
   );
 };
 
-const TableRow = ({ job, pageNum }) => {
+export const TableRow = ({ job, pageNum }) => {
   let history = useHistory();
   const onClick = () => {
     const to = {
@@ -270,6 +270,7 @@ const TableRow = ({ job, pageNum }) => {
       className="border-bottom my-3"
       onClick={() => onClick()}
       style={{ cursor: "pointer" }}
+      data-testid="table-row"
     >
       <Col sm={10}>
         <span className="lead" style={{ textTransform: "capitalize" }}>
