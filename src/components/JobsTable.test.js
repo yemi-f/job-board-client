@@ -1,33 +1,34 @@
 import { render, screen } from "@testing-library/react";
 import { TableBody, TableRow } from "./JobsTable";
 
-test("table body loading data", async () => {
-  render(<TableBody jobs={[]} pageNum={1} isLoading={true} />);
+describe("JobsTable", () => {
+  test("table body loading data", async () => {
+    render(<TableBody jobs={[]} pageNum={1} isLoading={true} />);
 
-  expect(screen.getByTestId("spinner-div"));
+    expect(screen.getByTestId("spinner-div"));
+  });
+
+  test("table row", async () => {
+    render(<TableRow job={jobs[0]} pageNum={1} />);
+
+    const title = screen.getByText(jobs[0].title);
+    const location = screen.getByText(jobs[0].location);
+    const employmentType = screen.getByText(jobs[0].employmentType);
+    const department = screen.getByText(jobs[0].department);
+    const button = screen.getByRole("button");
+    expect(title).toBeInTheDocument();
+    expect(location).toBeInTheDocument();
+    expect(employmentType).toBeInTheDocument();
+    expect(department).toBeInTheDocument();
+    expect(button).toHaveTextContent("Apply");
+  });
+
+  test("table body passed array with > 0 jobs", async () => {
+    render(<TableBody jobs={jobs} pageNum={1} isLoading={false} />);
+
+    expect(screen.getAllByTestId("table-row")).toHaveLength(jobs.length);
+  });
 });
-
-test("table row", async () => {
-  render(<TableRow job={jobs[0]} pageNum={1} />);
-
-  const title = screen.getByText(jobs[0].title);
-  const location = screen.getByText(jobs[0].location);
-  const employmentType = screen.getByText(jobs[0].employmentType);
-  const department = screen.getByText(jobs[0].department);
-  const button = screen.getByRole("button");
-  expect(title).toBeInTheDocument();
-  expect(location).toBeInTheDocument();
-  expect(employmentType).toBeInTheDocument();
-  expect(department).toBeInTheDocument();
-  expect(button).toHaveTextContent("Apply");
-});
-
-test("table body passed array with > 0 jobs", async () => {
-  render(<TableBody jobs={jobs} pageNum={1} isLoading={false} />);
-
-  expect(screen.getAllByTestId("table-row")).toHaveLength(jobs.length);
-});
-
 const jobs = [
   {
     responsibilities: [
