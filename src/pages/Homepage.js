@@ -17,7 +17,7 @@ const Homepage = () => {
                 <Row>
                     <Col xs={12} md={6} className="text-center my-auto">
                         <h2 className="display-4 m-3">Join us as we build something special</h2>
-                        <Button variant="info" size="lg" className="m-3" onClick={() => handleClick()}>
+                        <Button variant="info" size="lg" className="m-3" onChange={() => handleClick()}>
                             View open positions
                         </Button>
                     </Col>

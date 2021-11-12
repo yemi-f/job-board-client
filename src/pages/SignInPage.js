@@ -72,7 +72,7 @@ const SignInForm = ({ login }) => {
                 />
             </Form.Group>
             <div className="form-group form-check" >
-                <input type="checkbox" className="form-check-input" id="show-password" onClick={() => toggleShowPassword()} />
+                <input type="checkbox" className="form-check-input" id="show-password" checked={inputType === "text"} onChange={() => toggleShowPassword()} />
                 <label className="form-check-label" htmlFor="show-password" >Show password</label>
             </div>
             <Button variant="info" type="submit">
